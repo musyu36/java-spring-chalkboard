@@ -22,6 +22,7 @@ public class BoardController {
     // @PostMappingでPOSTで送信された/boardパスのリクエストを受けている
     @PostMapping("/board")
     public String postComment(@ModelAttribute CommentForm comment){
-        return "board";
+        //POSTリクエストを再送しないよう、リダイレクト
+        return "redirect:/board";
     }
 }
