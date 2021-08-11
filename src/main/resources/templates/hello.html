@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="ja">
+<!-- layout:decorate="~{layout}" でlayout.htmlをベース利用することを定義-->
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
     <title>Hello world</title>
+    <meta name="description" content="Hello">
 </head>
 <body>
-Hello world!
+<!-- leyout.html のlayout:fragment="layoutContent"に注入する-->
+<div layout:fragment="layoutContent">
+    <P>Hello World</P>
+</div>
 </body>
 </html>

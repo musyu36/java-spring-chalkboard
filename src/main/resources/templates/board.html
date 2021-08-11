@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.w3.org/1999/xhtml"
+        layout:decorate="~{layout}">
+<head>
+  <title>掲示板</title>
+  <meta name="description" content="掲示板です">
+  <link th:href="@{/css/board.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div layout:fragment="layoutContent">
+  <div id="board-area">
+    投稿の内容を表示する場所
+  </div>
+  <hr>
+  <!--
+    th:object="${commentForm}" でControllerでaddObjectしたフォームクラスの名前を指定
+    このフォームとJavaのフォームクラスを対応
+  -->
+  <!-- localhost:8080/boardにPOST送信 -->
+  <form method="POST" action="/board" th:object="${commentForm}">
+    <!--
+      th:field="*{name}" は、CommentFormクラスの各フィールドを指定
+      inputタグとJavaのフォームクラスを互いに対応、mailAddress, commentも同様
+    -->
+    <input placeholder="名前" th:field="*{name}">
+    <input placeholder="メールアドレス" th:field="*{mailAddress}">
+    <textarea placeholder="コメント内容" rows="5" cols="80" wrap="off" th:field="*{comment}">
+        </textarea>
+    <button>送信</button>
+  </form>
+</div>
+</body>
+</html>
