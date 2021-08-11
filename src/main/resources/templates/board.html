@@ -24,10 +24,20 @@
       th:field="*{name}" は、CommentFormクラスの各フィールドを指定
       inputタグとJavaのフォームクラスを互いに対応、mailAddress, commentも同様
     -->
-    <input placeholder="名前" th:field="*{name}">
-    <input placeholder="メールアドレス" th:field="*{mailAddress}">
+    <div>
+      <input placeholder="名前" th:field="*{name}">
+      <!--   #fieldsはBindingResultと同等の内容を保持する、th:errors="*{name}"でエラーメッセージを取得   -->
+      <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+    </div>
+    <div>
+      <input placeholder="メールアドレス" th:field="*{mailAddress}">
+      <span class="error-message" th:if="${#fields.hasErrors('mailAddress')}" th:errors="*{mailAddress}">mailAddress Error</span>
+    </div>
+    <div>
     <textarea placeholder="コメント内容" rows="5" cols="80" wrap="off" th:field="*{comment}">
-        </textarea>
+    </textarea>
+      <span class="error-message" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">comment Error</span>
+    </div>
     <button>送信</button>
   </form>
 </div>
