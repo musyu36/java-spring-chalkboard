@@ -12,4 +12,5 @@ spring:
       password:
       driver-class-name: org.h2.Driver
     schema: classpath:h2/schema.sql
+    data: classpath:h2/data.sql
     initialization-mode: embedded # (DB????SQL????)????.EMBEDDED=h2db???????. ALWAYS????
