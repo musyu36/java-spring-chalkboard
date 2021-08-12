@@ -2,6 +2,7 @@ package com.chalkboard.demo.presentation;
 
 import com.chalkboard.demo.application.form.CommentForm;
 import com.chalkboard.demo.application.usecase.UserCommentUseCase;
+import com.chalkboard.demo.domain.model.UserComments;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,9 @@ public class BoardController {
     // localhost:8080/board
     @GetMapping("/board")
     public ModelAndView viewBoard(ModelAndView modelAndView){
+        UserComments userComments = userCommentUseCase.read();
+        modelAndView.addObject("comments", userComments.getValues()); // Thymeleafにデータを渡す
+
         modelAndView.setViewName("board"); // ファイルのパスの設定
         modelAndView.addObject("commentForm", new CommentForm()); // Thymeleafにデータを渡す(空のフォームデータ)
         return modelAndView;
