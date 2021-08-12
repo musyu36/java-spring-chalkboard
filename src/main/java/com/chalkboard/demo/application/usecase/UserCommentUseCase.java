@@ -3,6 +3,7 @@ package com.chalkboard.demo.application.usecase;
 import com.chalkboard.demo.application.form.CommentForm;
 import com.chalkboard.demo.domain.model.UserComment;
 import com.chalkboard.demo.domain.model.UserCommentRepository;
+import com.chalkboard.demo.domain.model.UserComments;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,13 @@ public class UserCommentUseCase {
         );
 
         repository.save(userComment);
+    }
+
+    /**
+     * 投稿の取得
+     * @return 投稿のリスト
+     */
+    public UserComments read(){
+        return repository.select();
     }
 }
