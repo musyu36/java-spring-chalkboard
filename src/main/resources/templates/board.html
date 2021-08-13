@@ -24,7 +24,7 @@
     このフォームとJavaのフォームクラスを対応
   -->
   <!-- localhost:8080/boardにPOST送信 -->
-  <form method="POST" action="/board" th:object="${commentForm}">
+  <form method="POST" th:action="@{/board}" th:object="${commentForm}">
     <!--
       th:field="*{name}" は、CommentFormクラスの各フィールドを指定
       inputタグとJavaのフォームクラスを互いに対応、mailAddress, commentも同様
